@@ -1,0 +1,14 @@
+<div>
+    <%= link_to("index","/task/index") %>
+    <h1>show</h1>
+
+    <div name="todo_show">
+        <div>
+            <%= @task.content %>
+        </div>
+        <div>
+            <%= link_to "編集","/task/#{params[:id]}/edit" %>
+        </div>
+    </div>
+
+</div>

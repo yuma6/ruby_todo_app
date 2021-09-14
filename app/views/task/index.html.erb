@@ -1,0 +1,20 @@
+<div>
+    <h1>index</h1>
+
+    <div name="todo_create">
+        <%= form_tag("/post/new") do %>
+            <textarea name="content"></textarea>
+            <br>
+            <input type="submit" value="追加">
+        <% end %>
+    </div>
+
+    <div name="todo_view">
+        <% @task.each do |task|%>
+            <div>
+                <%= link_to "#{task.content}","/task/#{task.id}/show" %>
+            </div>
+        <% end %>
+    </div>
+
+</div>
