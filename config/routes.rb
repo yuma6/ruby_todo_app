@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "tasks/:id/show" => "tasks#show"
   get "tasks/:id/edit" => "tasks#edit"
 
-  post "tasks/new" => "tasks#new"
+  post "tasks/create" => "tasks#create"
   post "tasks/:id/update" => "tasks#update"
   post "tasks/:id/destroy" => "tasks#destroy"
 end

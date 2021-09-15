@@ -12,7 +12,7 @@ class TasksController < ActionController::Base
         @task = Task.find_by(id: params[:id])
     end
 
-    def new
+    def create
         @task = Task.new(content: params[:content])
         if @task.content
             @task.save
