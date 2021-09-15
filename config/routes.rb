@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   get "tasks/:id/edit" => "tasks#edit"
 
   post "tasks/new" => "tasks#new"
-  post "tasks/:id/edit_submit" => "tasks#edit_submit"
+  post "tasks/:id/update" => "tasks#update"
   post "tasks/:id/destroy" => "tasks#destroy"
 end

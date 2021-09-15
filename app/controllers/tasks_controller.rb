@@ -14,17 +14,19 @@ class TasksController < ActionController::Base
 
     def new
         @task = Task.new(content: params[:content])
-        if @task.save
+        if @task.content
+            @task.save
             redirect_to("/tasks/index")
         else
             render("tasks/index")
         end
     end
 
-    def edit_submit
+    def update
         @task = Task.find_by(id: params[:id])
         @task.content = params[:content]
-        if @task.save
+        if @task.content
+            @task.save
             redirect_to("/tasks/index")
         else
             render("tasks/#{params[:id]}/edit")

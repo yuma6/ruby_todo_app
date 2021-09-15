@@ -3,7 +3,7 @@
     <h1>edit</h1>
 
     <div name="todo_edit">
-        <%= form_tag("/tasks/#{params[:id]}/edit_submit") do %>
+        <%= form_tag("/tasks/#{params[:id]}/update") do %>
             <textarea name="content"><%= @task.content %></textarea>
             <br>
             <input type="submit" value="編集">
