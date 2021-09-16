@@ -39,4 +39,10 @@ class TasksController < ActionController::Base
         redirect_to("/tasks/index")
     end
 
+    def check
+        @task = Task.find_by(id: params[:id])
+        @task.finish = params[:finish]
+        @task.save
+        redirect_to("/tasks/index")
+    end
 end
