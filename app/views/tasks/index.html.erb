@@ -1,29 +1,29 @@
-<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<% content_for :todo_app do %>
+    <div>
 
-<div>
+        <h1>index</h1>
 
-    <h1>index</h1>
+        <div name="todo_create">
+            <%= form_tag("/tasks/create") do %>
+                <textarea name="content"></textarea>
+                <br>
+                <input type="submit" value="追加">
+            <% end %>
+        </div>
 
-    <div name="todo_create">
-        <%= form_tag("/tasks/create") do %>
-            <textarea name="content"></textarea>
-            <br>
-            <input type="submit" value="追加">
-        <% end %>
-    </div>
-
-    <div name="todo_view">
-        <% @tasks.each do |task|%>
-            <div>
-                <% if task.finish %>
-                    <span class="del">
+        <div name="todo_view">
+            <% @tasks.each do |task|%>
+                <div>
+                    <% if task.finish %>
+                        <span class="del">
+                            <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
+                        </span>
+                    <% else %>
                         <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
-                    </span>
-                <% else %>
-                    <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
 
-</div>
+    </div>
+<% end %>

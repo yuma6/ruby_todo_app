@@ -1,15 +1,17 @@
-<div>
+<% content_for :todo_app do %>
+    <div>
 
-    <%= link_to("index","/tasks/index") %>
-    <h1>show</h1>
+        <%= link_to("index","/tasks/index") %>
+        <h1>show</h1>
 
-    <div name="todo_show">
-        <div>
-            <%= @task.content %>
+        <div name="todo_show">
+            <div>
+                <%= @task.content %>
+            </div>
+            <div>
+                <%= link_to "編集","/tasks/#{params[:id]}/edit" %>
+            </div>
         </div>
-        <div>
-            <%= link_to "編集","/tasks/#{params[:id]}/edit" %>
-        </div>
+
     </div>
-
-</div>
+<% end %>
