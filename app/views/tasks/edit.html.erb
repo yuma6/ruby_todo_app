@@ -12,11 +12,11 @@
     </div>
 
     <div name="todo_check">
-    <%= form_with model: @check do |form| %>
-        <%= form.check_box :finish %>
-        <%= form.submit "check" %>
-        <span>作業済チェック</span>
-    <% end %>
+        <%= form_with model: @check do |form| %>
+            <%= form.check_box :finish, {checked: @task.finish} %>
+            <%= form.submit "check" %>
+            <span>作業済チェック</span>
+        <% end %>
     </div>
 
     <div name="todo_destroy">
