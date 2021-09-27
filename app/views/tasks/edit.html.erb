@@ -1,24 +1,23 @@
+<div>
 
-    <div>
+    <%= link_to("index","/tasks/index") %>
+    <h1>edit</h1>
 
-        <%= link_to("index","/tasks/index") %>
-        <h1>edit</h1>
-
-        <div name="todo_edit">
-            <%= form_with model: @update do |form| %>
-                <textarea name="content"><%= @task.content %></textarea>
-                <br>
-                <span>作業済チェック</span>
-                <%= form.check_box :finish, {checked: @task.finish} %>
-                <br>
-                <%= form.submit "編集" %>
-            <% end %>
-        </div>
-
-        <div name="todo_destroy">
-            <%= form_tag("/tasks/#{params[:id]}/destroy") do %>
-                <input type="submit" value="削除">
-            <% end %>
-        </div>
-
+    <div name="todo_edit">
+        <%= form_with model: @update do |form| %>
+            <textarea name="content"><%= @task.content %></textarea>
+            <br>
+            <span>作業済チェック</span>
+            <%= form.check_box :finish, {checked: @task.finish} %>
+            <br>
+            <%= form.submit "編集" %>
+        <% end %>
     </div>
+
+    <div name="todo_destroy">
+        <%= form_tag("/tasks/#{params[:id]}/destroy") do %>
+            <input type="submit" value="削除">
+        <% end %>
+    </div>
+
+</div>

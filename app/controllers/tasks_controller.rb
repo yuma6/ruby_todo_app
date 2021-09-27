@@ -1,4 +1,4 @@
-class TasksController < ActionController::Base
+class TasksController < ApplicationController
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
 
     def index
