@@ -1,6 +1,5 @@
 current directory: /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/puma-5.4.0/ext/puma_http11
-/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210910-20231-1oq787u.rb extconf.rb
-/home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0/mkmf.rb:1565: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210928-13251-y2gjje.rb extconf.rb
 checking for BIO_read() in -lcrypto... yes
 checking for SSL_CTX_new() in -lssl... yes
 checking for openssl/bio.h... yes
@@ -24,4 +23,4 @@ linking shared-object puma/puma_http11.so
 
 current directory: /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/puma-5.4.0/ext/puma_http11
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20210910-20231-hryta9/puma
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20210928-13251-1s126r8/puma

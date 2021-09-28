@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
-# stub: marcel 1.0.1 ruby lib
+# stub: marcel 1.0.2 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "marcel".freeze
-  s.version = "1.0.1"
+  s.version = "1.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib".freeze]
   s.authors = ["Tom Ward".freeze]
-  s.date = "2021-04-02"
+  s.date = "2021-09-20"
   s.email = ["tom@basecamp.com".freeze]
   s.homepage = "https://github.com/rails/marcel".freeze
   s.licenses = ["MIT".freeze, "Apache-2.0".freeze]

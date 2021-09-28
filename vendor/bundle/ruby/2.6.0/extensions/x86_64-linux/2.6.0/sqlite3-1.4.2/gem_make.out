@@ -1,6 +1,5 @@
 current directory: /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.2/ext/sqlite3
-/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210910-24177-4y9t4e.rb extconf.rb
-/home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0/mkmf.rb:1565: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210928-13251-1rysavp.rb extconf.rb
 checking for sqlite3.h... yes
 checking for pthread_create() in -lpthread... yes
 checking for -ldl... yes
@@ -82,4 +81,4 @@ linking shared-object sqlite3/sqlite3_native.so
 
 current directory: /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/sqlite3-1.4.2/ext/sqlite3
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20210910-24177-tx518g/sqlite3
+/usr/bin/install -c -m 0755 sqlite3_native.so ./.gem.20210928-13251-ik43st/sqlite3

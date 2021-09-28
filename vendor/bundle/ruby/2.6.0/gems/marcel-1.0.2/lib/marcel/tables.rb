@@ -1,5 +1,9 @@
 # -*- coding: binary -*-
 # frozen_string_literal: true
+
+# This file is auto-generated. Instead of editing this file, please
+# add MIMEs to data/custom.xml or lib/marcel/mime_type/definitions.rb.
+
 module Marcel
   # @private
   # :nodoc:
@@ -902,6 +906,7 @@ module Marcel
     'sas7bput' => 'application/x-sas-putility',
     'sas7butl' => 'application/x-sas-utility',
     'sas7bvew' => 'application/x-sas-view',
+    'sass' => 'text/x-sass',
     'sbml' => 'application/sbml+xml',
     'sc' => 'application/vnd.ibm.secure-container',
     'sc7' => 'application/x-sas-catalog',
@@ -911,6 +916,7 @@ module Marcel
     'scm' => 'text/x-scheme',
     'scq' => 'application/scvp-cv-request',
     'scs' => 'application/scvp-cv-response',
+    'scss' => 'text/x-scss',
     'scurl' => 'text/vnd.curl.scurl',
     'sd2' => 'application/x-sas-data-v6',
     'sd7' => 'application/x-sas-data',
@@ -2087,8 +2093,10 @@ module Marcel
     'text/x-rsrc' => [%w(r), %w(text/plain), 'R source code'],
     'text/x-rst' => [%w(rest rst restx), %w(text/plain), 'reStructuredText source code'],
     'text/x-ruby' => [%w(rb), %w(text/plain), 'Ruby source code'],
+    'text/x-sass' => [%w(sass), %w(text/plain), nil],
     'text/x-scala' => [%w(scala), %w(text/plain), 'Scala source code'],
     'text/x-scheme' => [%w(scm), %w(text/plain), 'Scheme source code'],
+    'text/x-scss' => [%w(scss), %w(text/plain), nil],
     'text/x-sed' => [%w(sed), %w(text/plain), 'Sed code'],
     'text/x-setext' => [%w(etx), %w(text/plain), nil],
     'text/x-sql' => [%w(sql), %w(text/plain), 'SQL code'],
@@ -2158,7 +2166,7 @@ module Marcel
     ['audio/mp4', [[4, 'ftypM4A '], [4, 'ftypM4B '], [4, 'ftypF4A '], [4, 'ftypF4B ']]],
     ['video/quicktime', [[4, "moov\000"], [4, "mdat\000"], [4, "free\000"], [4, "skip\000"], [4, "pnot\000"], [4, 'ftyp'], [0, "\000\000\000\bwide"]]],
     ['video/mpeg', [[0, "\000\000\001\263"], [0, "\000\000\001\272"]]],
-    ['video/webm', [[0, "\032E\337\243", [[4..4096, "B\202", [[4..4096, 'webm']]]]]]],
+    ['video/webm', [[0, "\032E\337\243", [[4..4096, "B\202", [[4..4096, 'webm', [[4..4096, 'V_VP8'], [4..4096, 'V_VP9']]]]]]]]],
     ['video/x-matroska', [[0, "\032E\337\243\223B\202\210matroska"]]],
     ['video/x-flv', [[0, 'FLV']]],
     ['audio/mpeg', [[0, "\377\362"], [0, "\377\363"], [0, "\377\364"], [0, "\377\365"], [0, "\377\366"], [0, "\377\367"], [0, "\377\372"], [0, "\377\373"], [0, "\377\374"], [0, "\377\375"], [0, "\377\377"], [0, 'ID3']]],
@@ -2361,6 +2369,7 @@ module Marcel
     ['application/x-mswrite', [[0, "1\276\000\000"], [0, "2\276\000\000"]]],
     ['application/x-netcdf', [[0, "CDF\001"], [0, "CDF\002"], [0, "CDF\001"]]],
     ['application/x-object', [[0, "\177ELF", [[16, "\001\000"], [16, "\000\001"]]]]],
+    ['application/x-ole-storage', [[0..8, "\320\317\021\340\241\261\032\341"]]],
     ['application/x-parquet', [[0, 'PAR1']]],
     ['application/x-project', [[0, 'MPX,Microsoft Project for Windows,']]],
     ['application/x-prt', [[8, '0M3C']]],
@@ -2397,6 +2406,7 @@ module Marcel
     ['audio/amr-wb', [[0, "#!AMR-WB\n"]]],
     ['audio/eac3', [[0, "\vw"]]],
     ['audio/prs.sid', [[0, 'PSID']]],
+    ['audio/webm', [[0, "\032E\337\243", [[4..4096, "B\202", [[4..4096, 'webm', [[4..4096, 'A_VORBIS'], [4..4096, 'A_OPUS']]]]]]]]],
     ['audio/x-flac', [[0, 'fLaC']]],
     ['audio/x-mod', [[0, 'Extended Module:'], [21, 'BMOD2STM'], [1080, 'M.K.'], [1080, 'M!K!'], [1080, 'FLT4'], [1080, 'FLT8'], [1080, '4CHN'], [1080, '6CHN'], [1080, '8CHN'], [1080, 'CD81'], [1080, 'OKTA'], [1080, '16CN'], [1080, '32CN'], [0, 'IMPM']]],
     ['audio/x-mpegurl', [[0, "#EXTM3U\r\n"]]],
@@ -2490,8 +2500,8 @@ module Marcel
     ['message/rfc822', [[0..1000, "\nMessage-ID:"]]],
     ['text/html', [[0..64, '<!DOCTYPE HTML'], [0..64, '<!DOCTYPE html'], [0..64, '<!doctype HTML'], [0..64, '<!doctype html'], [0..64, '<HEAD'], [0..64, '<head'], [0..64, '<TITLE'], [0..64, '<title'], [0..64, '<HTML'], [0, '<BODY'], [0, '<body'], [0, '<DIV'], [0, '<div'], [0, '<TITLE'], [0, '<title'], [0, '<h1'], [0, '<H1'], [0..128, '<html']]],
     ['text/vtt', [[0, "WEBVTT\r"], [0, "WEBVTT\n"], [0, '0xfeff', [[2, "WEBVTT\r"]]], [0, '0xfeff', [[2, "WEBVTT\n"]]], [0, "WEBVTT FILE\r"], [0, "WEBVTT FILE\n"]]],
-    ['text/x-matlab', [[0, "function [a-zA-Z][A-Za-z0-9_]{0,62}\\\\s*="]]],
     ['text/x-matlab', [[0, "function [a-zA-Z][A-Za-z0-9_]{0,62}[\\\\r\\\\n]"]]],
+    ['text/x-matlab', [[0, "function [a-zA-Z][A-Za-z0-9_]{0,62}\\\\s*="]]],
     ['application/inf', [[0, '[version]'], [0, '[strings]']]],
     ['application/x-bibtex-text-file', [[0, '%', [[2..128, "\n@article{"], [2..128, "\n@book{"], [2..128, "\n@inbook{"], [2..128, "\n@incollection{"], [2..128, "\n@inproceedings{"], [2..128, "\n@manual{"], [2..128, "\n@misc{"], [2..128, "\n@preamble{"], [2..128, "\n@phdthesis{"], [2..128, "\n@string{"], [2..128, "\n@techreport{"], [2..128, "\n@unpublished{"]]]]],
     ['application/xml', [[0, '<!--']]],

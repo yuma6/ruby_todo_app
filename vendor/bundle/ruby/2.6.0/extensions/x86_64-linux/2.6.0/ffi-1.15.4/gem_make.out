@@ -1,6 +1,5 @@
 current directory: /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/ffi-1.15.4/ext/ffi_c
-/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210910-20231-54qq4o.rb extconf.rb
-/home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0/mkmf.rb:1565: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
+/home/user18/.rbenv/versions/2.6.1/bin/ruby -I /home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0 -r ./siteconf20210928-13251-3ebzrz.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi... no
 checking for whether -Wl,--exclude-libs,ALL is accepted as LDFLAGS... yes
@@ -164,4 +163,4 @@ compiling Types.c
 compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.so
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20210910-20231-hrq1r7
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20210928-13251-1shrhlx

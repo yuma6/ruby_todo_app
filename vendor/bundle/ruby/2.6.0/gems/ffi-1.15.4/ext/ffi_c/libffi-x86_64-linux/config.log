@@ -40,13 +40,6 @@ PATH: /sbin
 PATH: /bin
 PATH: /usr/games
 PATH: /usr/local/games
-PATH: /mnt/c/Windows/system32
-PATH: /mnt/c/Windows
-PATH: /mnt/c/Windows/System32/Wbem
-PATH: /mnt/c/Windows/System32/WindowsPowerShell/v1.0/
-PATH: /mnt/c/Windows/System32/OpenSSH/
-PATH: /mnt/c/Users/user18/AppData/Local/Microsoft/WindowsApps
-PATH: /mnt/c/Users/user18/AppData/Local/Programs/Microsoft VS Code/bin
 PATH: /snap/bin
 
 

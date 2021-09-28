@@ -1,7 +1,6 @@
 have_header: checking for ruby/st.h... -------------------- yes
 
 "gcc -o conftest -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0/x86_64-linux -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0/ruby/backward -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0 -I. -I/home/user18/.rbenv/versions/2.6.1/include    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/user18/.rbenv/versions/2.6.1/lib -Wl,-rpath,/home/user18/.rbenv/versions/2.6.1/lib -L. -L/home/user18/.rbenv/versions/2.6.1/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/user18/.rbenv/versions/2.6.1/lib -L/home/user18/.rbenv/versions/2.6.1/lib -lruby  -lm   -lc"
-/home/user18/.rbenv/versions/2.6.1/lib/ruby/2.6.0/mkmf.rb:406: warning: Insecure world writable dir /mnt/c in PATH, mode 040777
 checked program was:
 /* begin */
 1: #include "ruby.h"
@@ -125,7 +124,7 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0/x86_64-linux -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0/ruby/backward -I/home/user18/.rbenv/versions/2.6.1/include/ruby-2.6.0 -I. -I/home/user18/.rbenv/versions/2.6.1/include    -O3 -ggdb3 -Wall -Wextra -Wdeclaration-after-statement -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wrestrict -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/home/user18/.rbenv/versions/2.6.1/lib -Wl,-rpath,/home/user18/.rbenv/versions/2.6.1/lib -L. -L/home/user18/.rbenv/versions/2.6.1/lib  -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,/home/user18/.rbenv/versions/2.6.1/lib -L/home/user18/.rbenv/versions/2.6.1/lib -lruby  -lm   -lc"
-/usr/bin/ld: /tmp/cc5NFRiq.o: in function `t':
+/usr/bin/ld: /tmp/ccNcV5Ii.o: in function `t':
 /home/user18/ruby_projects/todo_app/vendor/bundle/ruby/2.6.0/gems/msgpack-1.4.2/ext/msgpack/conftest.c:17: undefined reference to `rb_enc_interned_str'
 collect2: error: ld returned 1 exit status
 checked program was:
