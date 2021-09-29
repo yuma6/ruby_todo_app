@@ -5,12 +5,14 @@
     <div name="todo_create">
         <%= form_tag("/tasks/create") do %>
             <textarea name="content"></textarea>
+            <input type="date">
             <br>
             <input type="submit" value="追加">
         <% end %>
     </div>
 
     <div name="todo_view">
+    <table class="table table-bordered">
         <% @tasks.each do |task|%>
             <div>
                 <% if task.finish %>
@@ -22,6 +24,7 @@
                 <% end %>
             </div>
         <% end %>
+    </table>
     </div>
 
 </div>
