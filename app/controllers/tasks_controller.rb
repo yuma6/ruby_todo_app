@@ -12,8 +12,8 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(content: params[:content])
-        if @task.content
+        @task = Task.new(content: params[:content],deadline: params[:deadline])
+        if @task.content && @task.deadline
             @task.save
             redirect_to("/tasks/index")
         else
@@ -23,6 +23,7 @@ class TasksController < ApplicationController
 
     def update
         @task.content = params[:content]
+        @task.deadline = params[:deadline]
         @task.finish = params[:finish]
         @task.save
         redirect_to("/tasks/index")

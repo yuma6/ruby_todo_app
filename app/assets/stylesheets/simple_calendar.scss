@@ -9,14 +9,20 @@
     .wday-5 {}
     .wday-6 {}
   
-    .today {}
+    .today {
+      background-color: orange;
+    }
     .past {}
     .future {}
   
     .start-date {}
   
-    .prev-month {}
-    .next-month { }
+    .prev-month {
+      background-color: lightgray;
+    }
+    .next-month {
+      background-color: lightgray;
+    }
     .current-month {}
   
     .has-events {}

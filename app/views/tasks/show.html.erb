@@ -9,6 +9,9 @@
             <%= @task.content %>
         </div>
         <div>
+            <%= "#{@task.deadline}まで" %>
+        </div>
+        <div>
             <%= link_to "編集","/tasks/#{params[:id]}/edit" %>
         </div>
     </div>

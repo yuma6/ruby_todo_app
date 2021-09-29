@@ -8,6 +8,8 @@
         <%= form_with model: @update do |form| %>
             <textarea name="content"><%= @task.content %></textarea>
             <br>
+            <input type="date" name="deadline" value="<%= @task.deadline %>">
+            <br>
             <span>作業済チェック</span>
             <%= form.check_box :finish, {checked: @task.finish} %>
             <br>
@@ -20,5 +22,9 @@
             <input type="submit" value="削除">
         <% end %>
     </div>
+    
+    <%= month_calendar do |date| %>
+        <%= "#{date.month}/#{date.day}" %>
+    <% end %>
 
 </div>
