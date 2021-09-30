@@ -22,20 +22,5 @@
             <input type="submit" value="削除">
         <% end %>
     </div>
-    
-    <%= month_calendar events: @tasks do |date,tasks| %>
-        <%= "#{date.month}/#{date.day}" %>
-        <% tasks.each do |task| %>
-            <% if @date.before? task.start_time %>
-                <br>
-                <%= "#{task.content}"%>
-            <% else %>
-                <span class="red">
-                    <br>
-                    <%= "#{task.content}" %>
-                </span>
-            <% end %>
-        <% end %>
-    <% end %>
 
 </div>

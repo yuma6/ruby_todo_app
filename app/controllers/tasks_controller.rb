@@ -1,10 +1,9 @@
 class TasksController < ApplicationController
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
     before_action :date_time, only:[:index, :edit, :show]
-    before_action :index, only:[:index, :edit]
+    before_action :tasks_all, only:[:index, :edit, :show]
 
     def index
-        @tasks = Task.all.order(created_at: :desc)
     end
 
     def show
@@ -42,6 +41,10 @@ class TasksController < ApplicationController
 
     def date_time
         @date = Date.today
+    end
+
+    def tasks_all
+        @tasks = Task.all.order(created_at: :desc)
     end
 
 end
