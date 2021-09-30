@@ -1,5 +1,7 @@
 .simple-calendar {
-    .day {}
+    .day {
+      width: 14%;
+    }
   
     .wday-0 {}
     .wday-1 {}
@@ -9,9 +11,7 @@
     .wday-5 {}
     .wday-6 {}
   
-    .today {
-      background-color: orange;
-    }
+
     .past {}
     .future {}
   
@@ -25,5 +25,10 @@
     }
     .current-month {}
   
-    .has-events {}
+    .has-events {
+      background-color: lightgreen;
+    }
+    .today {
+      background-color: rgb(255, 255, 100);
+    }
   }

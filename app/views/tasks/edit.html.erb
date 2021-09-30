@@ -8,7 +8,7 @@
         <%= form_with model: @update do |form| %>
             <textarea name="content"><%= @task.content %></textarea>
             <br>
-            <input type="date" name="deadline" value="<%= @task.deadline %>">
+            <input type="date" name="start_time" value="<%= @task.start_time %>">
             <br>
             <span>作業済チェック</span>
             <%= form.check_box :finish, {checked: @task.finish} %>
@@ -23,8 +23,19 @@
         <% end %>
     </div>
     
-    <%= month_calendar do |date| %>
+    <%= month_calendar events: @tasks do |date,tasks| %>
         <%= "#{date.month}/#{date.day}" %>
+        <% tasks.each do |task| %>
+            <% if @date.before? task.start_time %>
+                <br>
+                <%= "#{task.content}"%>
+            <% else %>
+                <span class="red">
+                    <br>
+                    <%= "#{task.content}" %>
+                </span>
+            <% end %>
+        <% end %>
     <% end %>
 
 </div>

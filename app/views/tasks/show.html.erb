@@ -9,7 +9,7 @@
             <%= @task.content %>
         </div>
         <div>
-            <%= "#{@task.deadline}まで" %>
+            <%= "#{@task.start_time}まで" %>
         </div>
         <div>
             <%= link_to "編集","/tasks/#{params[:id]}/edit" %>

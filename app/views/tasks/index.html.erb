@@ -6,7 +6,7 @@
         <%= form_tag("/tasks/create") do %>
             <textarea name="content"></textarea>
             <br>
-            <input type="date" name="deadline">
+            <input type="date" name="start_time">
             <br>
             <input type="submit" value="追加">
         <% end %>
@@ -18,19 +18,29 @@
             <div>
                 <% if task.finish %>
                     <span class="del">
-                        <%= link_to "#{task.content}期日#{task.deadline}まで","/tasks/#{task.id}/show" %>
+                        <%= link_to "#{task.content}期日#{task.start_time}まで","/tasks/#{task.id}/show" %>
                     </span>
                 <% else %>
-                    <%= link_to "#{task.content}期日#{task.deadline}まで","/tasks/#{task.id}/show" %>
+                    <%= link_to "#{task.content}期日#{task.start_time}まで","/tasks/#{task.id}/show" %>
                 <% end %>
             </div>
         <% end %>
     </table>
     </div>
     
-    <%= month_calendar do |date| %>
+    <%= month_calendar events: @tasks do |date,tasks| %>
         <%= "#{date.month}/#{date.day}" %>
+        <% tasks.each do |task| %>
+            <% if @date.before? task.start_time %>
+                <br>
+                <%= "#{task.content}"%>
+            <% else %>
+                <span class="red">
+                    <br>
+                    <%= "#{task.content}" %>
+                </span>
+            <% end %>
+        <% end %>
     <% end %>
 
 </div>
-
