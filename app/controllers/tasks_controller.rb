@@ -18,7 +18,7 @@ class TasksController < ApplicationController
             @task.save
             redirect_to("/tasks/index")
         else
-            render("tasks/index")
+            redirect_to("/tasks/index")
         end
     end
 
