@@ -18,10 +18,12 @@
             <div>
                 <% if task.finish %>
                     <span class="del">
-                        <%= link_to "#{task.content}期日#{task.start_time}まで","/tasks/#{task.id}/show" %>
+                        <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
                     </span>
+                    <%= "#{task.start_time}" %>
                 <% else %>
-                    <%= link_to "#{task.content}期日#{task.start_time}まで","/tasks/#{task.id}/show" %>
+                    <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
+                    <%= "#{task.start_time}" %>
                 <% end %>
             </div>
         <% end %>
