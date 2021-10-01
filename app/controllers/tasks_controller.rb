@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
-    before_action :date_time, only:[:index, :edit, :show]
-    before_action :tasks_all, only:[:index, :edit, :show]
+    before_action :date_time, only:[:index, :edit, :show, :create]
+    before_action :tasks_all, only:[:index, :edit, :show, :create]
 
     def index
     end
@@ -18,7 +18,7 @@ class TasksController < ApplicationController
             @task.save
             redirect_to("/tasks/index")
         else
-            redirect_to("/tasks/index")
+            render("tasks/index")
         end
     end
 
