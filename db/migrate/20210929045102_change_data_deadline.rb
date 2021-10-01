@@ -1,5 +1,5 @@
 class ChangeDataDeadline < ActiveRecord::Migration[6.1]
   def change
-    change_column :tasks, :deadline, :date
+    add_column :tasks, :deadline, :date
   end
 end
