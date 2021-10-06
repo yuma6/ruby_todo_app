@@ -2,24 +2,24 @@
 
     <h1>edit</h1>
 
-    <%= link_to("indexに戻る","/tasks/index") %>
+    <div class="mb-3">
+        <%= link_to "indexに戻る","/tasks/index" %>
+    </div>
 
     <div name="todo_edit">
         <%= form_with model: @update do |form| %>
-            <textarea name="content"><%= @task.content %></textarea>
-            <br>
-            <input type="date" name="start_time" value="<%= @task.start_time %>">
-            <br>
-            <span>作業済チェック</span>
-            <%= form.check_box :finish, {checked: @task.finish} %>
-            <br>
-            <%= form.submit "編集" %>
+            <textarea name="content" class="mb-3 form-control"><%= @task.content %></textarea>
+            <input type="date" name="start_time" value="<%= @task.start_time %>" class="mb-3">
+            <div class="mb-3">
+                作業済チェック<%= form.check_box :finish, {checked: @task.finish} %>
+            </div>
+            <%= form.submit "編集",{class:"mb-3 btn btn-primary"} %>
         <% end %>
     </div>
 
     <div name="todo_destroy">
         <%= form_tag("/tasks/#{params[:id]}/destroy") do %>
-            <input type="submit" value="削除">
+            <input type="submit" value="削除" class="mb-3 btn btn-primary">
         <% end %>
     </div>
 

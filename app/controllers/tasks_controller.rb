@@ -35,6 +35,8 @@ class TasksController < ApplicationController
         redirect_to("/tasks/index")
     end
 
+    private
+
     def current_task
         @task = Task.find_by(id: params[:id])
     end

@@ -11,23 +11,33 @@
   </head>
 
   <body>
+    <div class="container">
 
-    <%= yield %>
-    
-    <%= month_calendar events: @tasks do |date,tasks| %>
-        <%= "#{date.month}/#{date.day}" %>
-        <% tasks.each do |task| %>
-            <% if @date.before? task.start_time %>
-                <br>
-                <%= "#{task.content}"%>
-            <% else %>
-                <span class="red">
-                    <br>
-                    <%= "#{task.content}" %>
-                </span>
-            <% end %>
-        <% end %>
-    <% end %>
-
+      <%= yield %>
+      
+      <%= month_calendar events: @tasks do |date,tasks| %>
+          <%= "#{date.month}/#{date.day}" %>
+          <% tasks.each do |task| %>
+              <% if @date.before? task.start_time %>
+                  <% if task.finish %>
+                      <br>
+                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
+                  <% else %>
+                      <br>
+                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
+                  <% end %>
+              <% else %>
+                  <% if task.finish %>
+                      <br>
+                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
+                  <% else %>
+                      <br>
+                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
+                  <% end %>
+              <% end %>
+          <% end %>
+      <% end %>
+      
+    </div>
   </body>
 </html>

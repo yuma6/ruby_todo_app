@@ -4,30 +4,16 @@
 
     <div name="todo_create">
         <%= form_tag("/tasks/create") do %>
-            <textarea name="content"></textarea>
-            <br>
-            <input type="date" name="start_time">
-            <br>
-            <input type="submit" value="追加">
+                <div class="mb-3">
+                    <textarea name="content" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <input type="date" name="start_time">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="追加" class="btn btn-primary">
+                </div>
         <% end %>
-    </div>
-
-    <div name="todo_view">
-    <table class="table table-bordered">
-        <% @tasks.each do |task|%>
-            <div>
-                <% if task.finish %>
-                    <span class="del">
-                        <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
-                    </span>
-                    <%= "#{task.start_time}" %>
-                <% else %>
-                    <%= link_to "#{task.content}","/tasks/#{task.id}/show" %>
-                    <%= "#{task.start_time}" %>
-                <% end %>
-            </div>
-        <% end %>
-    </table>
     </div>
 
 </div>

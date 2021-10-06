@@ -1,9 +1,15 @@
-span.del {
+.safe {
+    text-decoration: none;
+    color: black
+}
+
+.over {
+    text-decoration: none;
+    color: red
+}
+
+.del {
     text-decoration-line: line-through;
     text-decoration-style: solid;
     text-decoration-color: black;
-}
-
-span.red {
-    color: red;
 }

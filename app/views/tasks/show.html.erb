@@ -2,16 +2,18 @@
 
     <h1>show</h1>
 
-    <%= link_to("indexに戻る","/tasks/index") %>
+    <div class="mb-3">
+        <%= link_to("indexに戻る","/tasks/index") %>
+    </div>
 
     <div name="todo_show">
-        <div>
+        <div class="mb-3">
             <%= @task.content %>
         </div>
-        <div>
+        <div class="mb-3">
             <%= "#{@task.start_time}まで" %>
         </div>
-        <div>
+        <div class="mb-3">
             <%= link_to "編集","/tasks/#{params[:id]}/edit" %>
         </div>
     </div>
