@@ -1,6 +1,6 @@
 <div>
 
-    <h1>index</h1>
+    <h1>タスク一覧</h1>
 
     <div name="todo_create">
         <%= form_tag("/tasks/create") do %>
@@ -8,7 +8,7 @@
                     <textarea name="content" class="form-control"></textarea>
                 </div>
                 <div class="mb-3">
-                    <input type="date" name="start_time">
+                    <input type="date" value="<%= @date %>" name="start_time">
                 </div>
                 <div class="mb-3">
                     <input type="submit" value="追加" class="btn btn-primary">

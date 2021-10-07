@@ -12,7 +12,12 @@
 
   <body>
     <div class="container">
-
+      <span class="notice">
+          <%= notice %>
+      </span>
+      <span class="validate">
+          <%= alert %>
+      </span>
       <%= yield %>
       
       <%= month_calendar events: @tasks do |date,tasks| %>
@@ -37,7 +42,7 @@
               <% end %>
           <% end %>
       <% end %>
-      
+
     </div>
   </body>
 </html>

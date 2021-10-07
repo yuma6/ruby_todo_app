@@ -1,6 +1,6 @@
 <div>
 
-    <h1>edit</h1>
+    <h1>タスク編集</h1>
 
     <div class="mb-3">
         <%= link_to "indexに戻る","/tasks/index" %>
@@ -13,7 +13,7 @@
             <div class="mb-3">
                 作業済チェック<%= form.check_box :finish, {checked: @task.finish} %>
             </div>
-            <%= form.submit "編集",{class:"mb-3 btn btn-primary"} %>
+            <%= form.submit "保存",{class:"mb-3 btn btn-primary"} %>
         <% end %>
     </div>
 

@@ -1,6 +1,6 @@
 <div>
 
-    <h1>show</h1>
+    <h1>タスク詳細</h1>
 
     <div class="mb-3">
         <%= link_to("indexに戻る","/tasks/index") %>
@@ -14,7 +14,7 @@
             <%= "#{@task.start_time}まで" %>
         </div>
         <div class="mb-3">
-            <%= link_to "編集","/tasks/#{params[:id]}/edit" %>
+            <%= link_to "編集","/tasks/#{params[:id]}/edit",{class:"btn btn-primary"} %>
         </div>
     </div>
 

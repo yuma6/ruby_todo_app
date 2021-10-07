@@ -14,11 +14,19 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(content: params[:content],start_time: params[:start_time])
-        if @task.content && @task.start_time
-            @task.save
+        if @task.content=="" && @task.start_time==nil
+            flash[:alert]="タスクと日付が入力されていません"
+            redirect_to("/tasks/index")
+        elsif @task.content==""
+            flash[:alert]="タスクが入力されていません"
+            redirect_to("/tasks/index")
+        elsif @task.start_time==nil
+            flash[:alert]="日付が指定されていません"
             redirect_to("/tasks/index")
         else
-            render("tasks/index")
+            @task.save
+            flash[:notice]="タスクと日付を保存しました"
+            redirect_to("/tasks/index")
         end
     end
 
@@ -26,12 +34,25 @@ class TasksController < ApplicationController
         @task.content = params[:content]
         @task.start_time = params[:start_time]
         @task.finish = params[:finish]
-        @task.save
-        redirect_to("/tasks/index")
+        if @task.content=="" && @task.start_time==nil
+            flash[:alert]="タスクと日付が入力されていません"
+            redirect_to("/tasks/#{@task.id}/edit")
+        elsif @task.content==""
+            flash[:alert]="タスクが入力されていません"
+            redirect_to("/tasks/#{@task.id}/edit")
+        elsif @task.start_time==nil
+            flash[:alert]="日付が指定されていません"
+            redirect_to("/tasks/#{@task.id}/edit")
+        else
+            @task.save
+            flash[:notice]="タスクの変更を保存しました"
+            redirect_to("/tasks/index")
+        end
     end
 
     def destroy
         @task.destroy
+        flash[:notice]="タスクを削除しました"
         redirect_to("/tasks/index")
     end
 
