@@ -15,10 +15,14 @@
  */
 @import "bootstrap";
 
-.notice{
-    background-color: limegreen;
+.flash{
+    display: inline-block;
+    width:  100%;
+    text-align: center;
 }
-
-.validate{
-    background-color: red;
+.green{
+    color: limegreen;
+}
+.red{
+    color: red;
 }

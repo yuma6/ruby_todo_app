@@ -11,13 +11,11 @@
   </head>
 
   <body>
+    <span class="flash">
+        <span class="green"><%= notice %></span>
+        <span class="red"><%= alert %></span>
+    </span>
     <div class="container">
-      <span class="notice">
-          <%= notice %>
-      </span>
-      <span class="validate">
-          <%= alert %>
-      </span>
       <%= yield %>
       
       <%= month_calendar events: @tasks do |date,tasks| %>
