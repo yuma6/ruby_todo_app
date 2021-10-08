@@ -14,24 +14,19 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(content: params[:content],start_time: params[:start_time])
-        if @task.content && @task.start_time
-            @task.save
-            redirect_to("/tasks/index")
-        else
-            render("tasks/index")
-        end
+        save_valid_task
     end
 
     def update
         @task.content = params[:content]
         @task.start_time = params[:start_time]
         @task.finish = params[:finish]
-        @task.save
-        redirect_to("/tasks/index")
+        save_valid_task
     end
 
     def destroy
         @task.destroy
+        flash[:notice]="タスクを削除しました"
         redirect_to("/tasks/index")
     end
 
@@ -47,6 +42,17 @@ class TasksController < ApplicationController
 
     def tasks_all
         @tasks = Task.all.order(created_at: :desc)
+    end
+
+    def save_valid_task
+        if @task.valid?
+            @task.save
+            flash[:notice]="タスクを保存しました"
+            redirect_to("/tasks/index")
+        else
+            flash[:alert]="#{@task.errors.full_messages}"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
 end
