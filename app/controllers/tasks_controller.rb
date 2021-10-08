@@ -14,14 +14,14 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(content: params[:content],start_time: params[:start_time])
-        task_valid
+        save_valid_task
     end
 
     def update
         @task.content = params[:content]
         @task.start_time = params[:start_time]
         @task.finish = params[:finish]
-        task_valid
+        save_valid_task
     end
 
     def destroy
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
         @tasks = Task.all.order(created_at: :desc)
     end
 
-    def task_valid
+    def save_valid_task
         if @task.valid?
             @task.save
             flash[:notice]="タスクを保存しました"
