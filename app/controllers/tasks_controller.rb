@@ -14,40 +14,14 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(content: params[:content],start_time: params[:start_time])
-        if @task.content=="" && @task.start_time==nil
-            flash[:alert]="タスクと日付が入力されていません"
-            redirect_to("/tasks/index")
-        elsif @task.content==""
-            flash[:alert]="タスクが入力されていません"
-            redirect_to("/tasks/index")
-        elsif @task.start_time==nil
-            flash[:alert]="日付が指定されていません"
-            redirect_to("/tasks/index")
-        else
-            @task.save
-            flash[:notice]="タスクと日付を保存しました"
-            redirect_to("/tasks/index")
-        end
+        task_valid
     end
 
     def update
         @task.content = params[:content]
         @task.start_time = params[:start_time]
         @task.finish = params[:finish]
-        if @task.content=="" && @task.start_time==nil
-            flash[:alert]="タスクと日付が入力されていません"
-            redirect_to("/tasks/#{@task.id}/edit")
-        elsif @task.content==""
-            flash[:alert]="タスクが入力されていません"
-            redirect_to("/tasks/#{@task.id}/edit")
-        elsif @task.start_time==nil
-            flash[:alert]="日付が指定されていません"
-            redirect_to("/tasks/#{@task.id}/edit")
-        else
-            @task.save
-            flash[:notice]="タスクの変更を保存しました"
-            redirect_to("/tasks/index")
-        end
+        task_valid
     end
 
     def destroy
@@ -68,6 +42,17 @@ class TasksController < ApplicationController
 
     def tasks_all
         @tasks = Task.all.order(created_at: :desc)
+    end
+
+    def task_valid
+        if @task.valid?
+            @task.save
+            flash[:notice]="タスクを保存しました"
+            redirect_to("/tasks/index")
+        else
+            flash[:alert]="#{@task.errors.full_messages}"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
 end
