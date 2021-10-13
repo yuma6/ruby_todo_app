@@ -11,35 +11,41 @@
   </head>
 
   <body>
-    <span class="flash">
-        <span class="green"><%= notice %></span>
-        <span class="red"><%= alert %></span>
-    </span>
     <div class="container">
-      <%= yield %>
-      
-      <%= month_calendar events: @tasks do |date,tasks| %>
-          <%= "#{date.month}/#{date.day}" %>
-          <% tasks.each do |task| %>
-              <% if @date.before? task.start_time %>
-                  <% if task.finish %>
-                      <br>
-                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
-                  <% else %>
-                      <br>
-                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
-                  <% end %>
-              <% else %>
-                  <% if task.finish %>
-                      <br>
-                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
-                  <% else %>
-                      <br>
-                      <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
-                  <% end %>
-              <% end %>
-          <% end %>
-      <% end %>
+
+        <span class="flash">
+            <span class="notice"><%= notice %></span>
+            <span class="alert"><%= alert %></span>
+        </span>
+
+        <%= yield %>
+
+        <% if controller.controller_name == "tasks" %>
+        <% if current_user != nil %><%#非ログイン状態で表示するとエラーが出るためカレンダーを消している%>
+            <%= month_calendar events: @id_tasks do |date,tasks| %>
+                <%= "#{date.month}/#{date.day}" %>
+                <% tasks.each do |task| %>
+                    <% if @date.before? task.start_time %>
+                        <% if task.finish %>
+                            <br>
+                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe del"} %>
+                        <% else %>
+                            <br>
+                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe"} %> 
+                        <% end %>
+                    <% else %>
+                        <% if task.finish %>
+                            <br>
+                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over del"} %>
+                        <% else %>
+                            <br>
+                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over"} %> 
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% end %>
+        <% end %>
+        <% end %>
 
     </div>
   </body>
