@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
+    before_action :authenticate_user!, only:[:show, :edit, :create, :update, :destroy]
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
     before_action :date_time, only:[:index, :edit, :show, :create]
     before_action :tasks_all, only:[:index, :edit, :show, :create]
-    before_action :test_user_task, only:[:index, :edit, :show]
+    before_action :current_user_task, only:[:index, :edit, :show]
 
 
     def index
@@ -60,7 +61,7 @@ class TasksController < ApplicationController
         end
     end
 
-    def test_user_task
+    def current_user_task
         if current_user != nil
             @user = User.find_by(id: current_user.id)
             @id_tasks = @user.tasks

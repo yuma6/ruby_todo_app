@@ -21,30 +21,30 @@
         <%= yield %>
 
         <% if controller.controller_name == "tasks" %>
-        <% if current_user != nil %><%#非ログイン状態で表示するとエラーが出るためカレンダーを消している%>
-            <%= month_calendar events: @id_tasks do |date,tasks| %>
-                <%= "#{date.month}/#{date.day}" %>
-                <% tasks.each do |task| %>
-                    <% if @date.before? task.start_time %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe del"} %>
+            <% if current_user != nil %>
+                <%= month_calendar events: @id_tasks do |date,tasks| %>
+                    <%= "#{date.month}/#{date.day}" %>
+                    <% tasks.each do |task| %>
+                        <% if @date.before? task.start_time %>
+                            <% if task.finish %>
+                                <br>
+                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe del"} %>
+                            <% else %>
+                                <br>
+                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe"} %> 
+                            <% end %>
                         <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe"} %> 
-                        <% end %>
-                    <% else %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over del"} %>
-                        <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over"} %> 
+                            <% if task.finish %>
+                                <br>
+                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over del"} %>
+                            <% else %>
+                                <br>
+                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over"} %> 
+                            <% end %>
                         <% end %>
                     <% end %>
                 <% end %>
             <% end %>
-        <% end %>
         <% end %>
 
     </div>
