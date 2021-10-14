@@ -62,3 +62,6 @@ end
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem "simple_calendar", "~> 2.0"
+
+source 'https://rubygems.org'
+gem 'devise'

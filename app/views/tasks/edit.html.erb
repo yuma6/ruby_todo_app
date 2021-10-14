@@ -18,7 +18,7 @@
     </div>
 
     <div name="todo_destroy">
-        <%= form_tag("/tasks/#{params[:id]}/destroy") do %>
+        <%= form_tag("/tasks/#{@user.id}/#{params[:id]}/destroy") do %>
             <input type="submit" value="削除" class="mb-3 btn btn-primary">
         <% end %>
     </div>
