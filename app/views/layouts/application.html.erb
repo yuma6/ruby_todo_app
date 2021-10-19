@@ -21,7 +21,7 @@
         <%= yield %>
 
         <% if controller.controller_name == "tasks" %>
-            <% if @user != nil %>
+            <% if @user.present? %>
                 <%= month_calendar events: @user.tasks do |date,tasks| %>
                     <%= "#{date.month}/#{date.day}" %>
                     <% tasks.each do |task| %>
