@@ -21,25 +21,25 @@
         <%= yield %>
 
         <% if controller.controller_name == "tasks" %>
-            <% if current_user != nil %>
-                <%= month_calendar events: @id_tasks do |date,tasks| %>
+            <% if @user.present? %>
+                <%= month_calendar events: @user.tasks do |date,tasks| %>
                     <%= "#{date.month}/#{date.day}" %>
                     <% tasks.each do |task| %>
                         <% if @date.before? task.start_time %>
                             <% if task.finish %>
                                 <br>
-                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe del"} %>
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
                             <% else %>
                                 <br>
-                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"safe"} %> 
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
                             <% end %>
                         <% else %>
                             <% if task.finish %>
                                 <br>
-                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over del"} %>
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
                             <% else %>
                                 <br>
-                                <%= link_to "#{task.content}","/tasks/#{@user.id}/#{task.id}/show",{class:"over"} %> 
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
                             <% end %>
                         <% end %>
                     <% end %>

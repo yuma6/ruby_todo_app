@@ -3,7 +3,7 @@ class TasksController < ApplicationController
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
     before_action :date_time, only:[:index, :edit, :show, :create]
     before_action :tasks_all, only:[:index, :edit, :show, :create]
-    before_action :current_user_task, only:[:index, :edit, :show]
+    before_action :set_current_user, only:[:index, :edit, :show, :create]
 
 
     def index
@@ -16,10 +16,7 @@ class TasksController < ApplicationController
     end
 
     def create
-        if current_user != nil
-            user_id = current_user.id
-        end
-        @task = Task.new(content: params[:content],start_time: params[:start_time],user_id: user_id)
+        @task = Task.new(content: params[:content],start_time: params[:start_time],user_id: @user.id)
         save_valid_task
     end
 
@@ -61,10 +58,7 @@ class TasksController < ApplicationController
         end
     end
 
-    def current_user_task
-        if current_user != nil
-            @user = User.find_by(id: current_user.id)
-            @id_tasks = @user.tasks
-        end
+    def set_current_user
+        @user = current_user
     end
 end
