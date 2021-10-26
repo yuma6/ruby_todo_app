@@ -1,10 +1,8 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!, only:[:show, :edit, :create, :update, :destroy]
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
-    before_action :date_time, only:[:index, :edit, :show, :create]
     before_action :tasks_all, only:[:index, :edit, :show, :create]
-    before_action :set_current_user, only:[:index, :edit, :show, :create]
-
+    before_action :user_id_wrong, only:[:edit, :update, :destroy]
 
     def index
     end
@@ -16,8 +14,9 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(content: params[:content],start_time: params[:start_time],user_id: @user.id)
+        @task = Task.new(content: params[:content],start_time: params[:start_time],user_id: @user.id,team_id: params[:team_id])
         save_valid_task
+        redirect_back(fallback_location: root_path)
     end
 
     def update
@@ -25,6 +24,7 @@ class TasksController < ApplicationController
         @task.start_time = params[:start_time]
         @task.finish = params[:finish]
         save_valid_task
+        redirect_to("/tasks/index")
     end
 
     def destroy
@@ -39,26 +39,24 @@ class TasksController < ApplicationController
         @task = Task.find_by(id: params[:id])
     end
 
-    def date_time
-        @date = Date.today
-    end
-
     def tasks_all
         @tasks = Task.all.order(created_at: :desc)
     end
 
     def save_valid_task
-        if @task.valid?
+        if @task.valid?(:add_task)
             @task.save
             flash[:notice]="タスクを保存しました"
-            redirect_to("/tasks/index")
         else
             flash[:alert]="#{@task.errors.full_messages}"
-            redirect_back(fallback_location: root_path)
         end
     end
 
-    def set_current_user
-        @user = current_user
+    def user_id_wrong
+        if @user.id != Task.find_by(id: params[:id])
+          flash[:alert]="ユーザーID不一致"
+          redirect_to("/tasks/index")
+        end
     end
+
 end
