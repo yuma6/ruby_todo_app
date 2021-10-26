@@ -2,20 +2,21 @@
 
     <h1>タスク詳細</h1>
 
-    <div class="mb-3">
-        <%= link_to("indexに戻る","/tasks/index") %>
-    </div>
-
     <div name="todo_show">
+        <div class="mb-3">
+            <%= "タスクを追加したユーザー:ID#{@task.user.id}" %>
+        </div>
         <div class="mb-3">
             <%= @task.content %>
         </div>
         <div class="mb-3">
             <%= "#{@task.start_time}まで" %>
         </div>
-        <div class="mb-3">
-            <%= link_to "編集","/tasks/#{params[:id]}/edit",{class:"btn btn-primary"} %>
-        </div>
+        <% if @user.id == @task.user.id %>
+            <div class="mb-3">
+                <%= link_to "編集","/tasks/#{params[:id]}/edit",{class:"btn btn-primary"} %>
+            </div>
+        <% end%>
     </div>
 
 </div>

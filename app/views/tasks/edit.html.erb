@@ -2,10 +2,6 @@
 
     <h1>タスク編集</h1>
 
-    <div class="mb-3">
-        <%= link_to "indexに戻る","/tasks/index" %>
-    </div>
-
     <div name="todo_edit">
         <%= form_with model: @update do |form| %>
             <textarea name="content" class="mb-3 form-control"><%= @task.content %></textarea>
@@ -18,9 +14,7 @@
     </div>
 
     <div name="todo_destroy">
-        <%= form_tag("/tasks/#{params[:id]}/destroy") do %>
-            <input type="submit" value="削除" class="mb-3 btn btn-primary">
-        <% end %>
+        <%= link_to("削除","/tasks/#{params[:id]}/destroy",class:"mb-3 btn btn-primary",method: :post) %>
     </div>
 
 </div>

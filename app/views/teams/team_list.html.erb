@@ -1,0 +1,17 @@
+<div>
+    <% if @user.present? %>
+
+        <h1>チーム一覧</h1>
+        <%= form_tag("/teams/team_create") do %>
+            <input name="team_name" class="form-control">
+            <input type="submit" value="チーム作成" class="btn btn-primary">
+        <% end %>
+        
+        <% @teams.each do |teams| %>
+            <div class=".list_group">
+                <%= link_to("ID:#{teams.id}/#{teams.team_name}","/teams/#{teams.id}/space",{class: ".list-group-item"})%>
+            </div>
+        <% end %>
+
+    <% end %>
+</div>
