@@ -53,7 +53,7 @@ class TasksController < ApplicationController
     end
 
     def user_id_wrong
-        if @user.id != Task.find_by(id: params[:id])
+        if @user.id != @task.user_id
           flash[:alert]="ユーザーID不一致"
           redirect_to("/tasks/index")
         end
