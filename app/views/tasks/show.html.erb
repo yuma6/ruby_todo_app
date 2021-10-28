@@ -5,6 +5,7 @@
     <div name="todo_show">
         <div class="mb-3">
             <%= "タスクを追加したユーザー:ID#{@task.user.id}" %>
+            <%= "共有されたチーム:ID#{@task.team_id}" %>
         </div>
         <div class="mb-3">
             <%= @task.content %>

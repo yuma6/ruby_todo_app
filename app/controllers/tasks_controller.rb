@@ -1,8 +1,9 @@
 class TasksController < ApplicationController
     before_action :authenticate_user!, only:[:show, :edit, :create, :update, :destroy]
-    before_action :current_task, only:[:show, :edit, :update, :destroy, :check]
+    before_action :current_task, only:[:show, :edit, :update, :destroy, :check, :show_check]
     before_action :tasks_all, only:[:index, :edit, :show, :create]
     before_action :user_id_wrong, only:[:edit, :update, :destroy]
+    before_action :show_check, only:[:show]
 
     def index
     end
@@ -54,8 +55,16 @@ class TasksController < ApplicationController
 
     def user_id_wrong
         if @user.id != @task.user_id
-          flash[:alert]="ユーザーID不一致"
+          flash[:alert]="ユーザーIDが一致しませんでした"
           redirect_to("/tasks/index")
+        end
+    end
+
+    def show_check
+        @team_user = TeamUser.where(team_id: @task.team_id)
+        if @team_user.find_by(user_id: @user.id).blank? && @user.id != @task.user_id
+            flash[:alert]="このタスクが共有されたチームに所属していません"
+            redirect_to("/tasks/index")
         end
     end
 
