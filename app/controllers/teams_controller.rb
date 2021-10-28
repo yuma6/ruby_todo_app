@@ -1,23 +1,23 @@
 class TeamsController < ApplicationController
-    before_action :authenticate_user!, only:[:team_space, :team_create, :team_destroy, :team_in, :team_out]
-    before_action :teams_all, only:[:team_list]
-    before_action :set_current_team, only:[:team_space, :team_destroy, :team_in, :team_out]
+    before_action :authenticate_user!, only:[:team_space, :create, :destroy, :team_in, :team_out]
+    before_action :teams_all, only:[:index]
+    before_action :set_current_team, only:[:team_space, :destroy, :team_in, :team_out]
     before_action :member_check, only:[:team_space]
     before_action :set_team_member, only:[:team_space]
 
-    def team_list
+    def index
     end
 
     def team_space
     end
 
-    def team_create
+    def create
         @team = Team.new(team_name: params[:team_name])
         save_valid_team
         redirect_back(fallback_location: root_path)
     end
 
-    def team_destroy
+    def destroy
         @current_team.destroy
         flash[:notice]="チームを削除しました"
         redirect_to("/teams/list")
@@ -52,7 +52,7 @@ class TeamsController < ApplicationController
     end
 
     def save_valid_team
-        if @team.valid?(:team_create)
+        if @team.valid?(:create)
             @team.save
             flash[:notice]="チームを作成しました"
         else
