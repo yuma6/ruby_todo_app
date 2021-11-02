@@ -62,13 +62,13 @@
                     <div class=".list-group-item"><%= "ID:#{member.user_id}" %></div>
                 </div>
             <% end %>
-
-            <div class="mb-3">
-                <% if @manager_check.present? %>
-                    <%= link_to("チーム管理","/teams/#{@current_team.id}/manager",class: "btn btn-success")%>
-                <% end %>
-            </div>
-
         <% end %>
+
+        <div class="mb-3">
+            <% if @manager_check.present? || @deve_user.present? %>
+                <%= link_to("チーム管理","/teams/#{@current_team.id}/manager",class: "btn btn-success")%>
+            <% end %>
+        </div>
+
     <% end %>
 </div>

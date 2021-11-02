@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
     before_action :manager_check, only:[:team_space, :team_out, :team_manager]
     before_action :date_time, only:[:team_space]
     before_action :management, only:[:team_remove, :team_assignment]
+    before_action :deve_user, only:[:team_space, :team_manager]
 
     def index
     end
