@@ -1,13 +1,14 @@
 class TeamsController < ApplicationController
-    before_action :authenticate_user!, only:[:team_space, :team_create, :team_destroy, :team_in, :team_out]
-    before_action :teams_all, only:[:team_list]
-    before_action :set_current_team, only:[:team_space, :team_destroy, :team_manager, :team_in, :team_out, :team_remove, :team_assignment]
+    before_action :authenticate_user!, only:[:team_space, :create, :destroy, :team_in, :team_out]
+    before_action :set_current_user, only:[:index, :team_space, :team_in, :team_out]
+    before_action :teams_all, only:[:index]
+    before_action :set_current_team, only:[:team_space, :team_manager, :destroy, :team_in, :team_out, :team_remove, :team_assignment]
     before_action :member_check, only:[:team_space]
     before_action :set_team_member, only:[:team_space]
     before_action :manager_check, only:[:team_space, :team_out, :team_manager]
+    before_action :date_time, only:[:team_space]
 
-
-    def team_list
+    def index
     end
 
     def team_space
@@ -16,15 +17,15 @@ class TeamsController < ApplicationController
     def team_manager
     end
 
-    def team_create
-        @team = Team.new(team_name: params[:team_name], manager_id: @user.id)
+    def create
+        @team = Team.new(team_name: params[:team_name])
         save_valid_team
         @team_user = TeamUser.new(team_id: @team.id ,user_id: @user.id)
         @team_user.save
         redirect_back(fallback_location: root_path)
     end
 
-    def team_destroy
+    def destroy
         @current_team.destroy
         flash[:notice]="チームを削除しました"
         redirect_to("/teams/list")
