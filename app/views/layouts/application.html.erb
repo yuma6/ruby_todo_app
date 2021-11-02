@@ -17,6 +17,12 @@
             <span class="notice"><%= notice %></span>
             <span class="alert"><%= alert %></span>
         </span>
+        <%= link_to("ログイン","/users/sign_in") %>
+        <%= link_to("登録","/users/sign_up") %>
+        <%= link_to("ログアウト","/users/sign_out",method: :delete) %>
+        <%= "ユーザーID：#{@user&.id}" %>
+        <%= link_to("タスク一覧","/tasks/index") %>
+        <%= link_to("チーム一覧","/teams/list")%>
 
         <%= yield %>
 
@@ -44,6 +50,12 @@
                         <% end %>
                     <% end %>
                 <% end %>
+                <h4>参加中のチーム</h4>
+                <% @user.teams.each do |team| %>
+                    <div class=".list_group">
+                        <%= link_to(team.team_name,"/teams/#{team.id}/space") %>
+                    </div>
+                <% end %>            
             <% end %>
         <% end %>
 

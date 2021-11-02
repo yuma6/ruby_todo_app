@@ -1,25 +1,26 @@
 <div>
-    <%= link_to("ログイン","/users/sign_in") %>
-    <%= link_to("登録","/users/sign_up") %>
-    <%= link_to("ログアウト","/users/sign_out",method: :delete) %>
-    <%= "ユーザーID：#{@user&.id}" %>
 
     <% if @user.present? %>
         <h1>タスク一覧</h1>
 
         <div name="todo_create">
             <%= form_tag("/tasks/create") do %>
-                    <div class="mb-3">
-                        <textarea name="content" class="form-control"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <input type="date" value="<%= @date %>" name="start_time">
-                    </div>
-                    <div class="mb-3">
-                        <input type="submit" value="追加" class="btn btn-primary">
-                    </div>
+                <div class="mb-3">
+                    <textarea name="content" class="form-control"></textarea>
+                </div>
+                <div class="mb-3">
+                    <input type="date" value="<%= @date %>" name="start_time">
+                    <select name="team_id">
+                        <option>チームに共有しない</option>
+                        <% @user.teams.each do |teams| %>
+                            <option name="team_id" value="<%= teams.id %>"><%= teams.team_name %></option>
+                        <% end %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="追加" class="btn btn-primary">
+                </div>
             <% end %>
         </div>
     <% end %>
-
 </div>
