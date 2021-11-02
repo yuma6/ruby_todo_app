@@ -1,8 +1,12 @@
 class ApplicationController < ActionController::Base
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy, :index, :team_space, :team_in, :team_out]
 >>>>>>> action_name
+=======
+    before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy, :team_space, :team_in, :team_out]
+>>>>>>> indexの重複を削除
 
     private
   
