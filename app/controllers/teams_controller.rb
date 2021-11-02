@@ -1,12 +1,13 @@
 class TeamsController < ApplicationController
     before_action :authenticate_user!, only:[:team_space, :create, :destroy, :team_in, :team_out]
-    before_action :set_current_user, only:[:index, :team_space, :team_in, :team_out]
+    before_action :set_current_user, only:[:index, :create, :team_space, :team_manager, :team_in, :team_out]
     before_action :teams_all, only:[:index]
     before_action :set_current_team, only:[:team_space, :team_manager, :destroy, :team_in, :team_out, :team_remove, :team_assignment]
     before_action :member_check, only:[:team_space]
     before_action :set_team_member, only:[:team_space]
     before_action :manager_check, only:[:team_space, :team_out, :team_manager]
     before_action :date_time, only:[:team_space]
+    before_action :management, only:[:team_remove, :team_assignment]
 
     def index
     end
@@ -18,7 +19,7 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @team = Team.new(team_name: params[:team_name])
+        @team = Team.new(team_name: params[:team_name], manager_id: @user.id)
         save_valid_team
         @team_user = TeamUser.new(team_id: @team.id ,user_id: @user.id)
         @team_user.save
@@ -51,7 +52,9 @@ class TeamsController < ApplicationController
 
     def team_remove
         @remove_user = TeamUser.find_by(team_id: @current_team.id ,user_id: params[:user_id])
-        if @remove_user&.destroy
+        if @management
+            flash[:notice]="チーム管理者は除外できません"
+        elsif @remove_user&.destroy
             flash[:notice]="チーム参加者を除外しました"
         else
             flash[:notice]="対象が選択されていません"
@@ -60,10 +63,18 @@ class TeamsController < ApplicationController
     end
 
     def team_assignment
-        @current_team.manager_id = params[:user_id]#　@current_team.manager_id　integer　　params[:user_id]　string
-        @current_team.save
-        flash[:notice]="チーム管理者を変更しました"
-        redirect_to("/teams/#{@current_team.id}/space")
+        if @management
+            flash[:notice]="自分を選択しています"
+            redirect_back(fallback_location: root_path)
+        elsif params[:user_id].present?
+            @current_team.manager_id = params[:user_id]
+            @current_team.save
+            flash[:notice]="チーム管理者を変更しました"
+            redirect_to("/teams/#{@current_team.id}/space")
+        else
+            flash[:notice]="変更先ユーザーが選択されませんでした"
+            redirect_back(fallback_location: root_path)
+        end
     end
 
     private
@@ -95,6 +106,10 @@ class TeamsController < ApplicationController
 
     def manager_check
         @manager_check = Team.find_by(id: @current_team.id ,manager_id: @user.id)
+    end
+
+    def management
+        @management = @current_team.manager_id == params[:user_id].to_i
     end
 
 end
