@@ -24,7 +24,7 @@ end
         content: "user1-team#{n+1}",
         user_id: "1",
         team_id: "#{n+1}",
-        start_time: "2021-10-27"
+        start_time: Date.today
     )
 end
 5.times do |n|
@@ -32,7 +32,7 @@ end
         content: "user2-team#{n+1}",
         user_id: "2",
         team_id: "#{n+1}",
-        start_time: "2021-10-27"
+        start_time: Date.today
     )
 end
 5.times do |n|
@@ -40,7 +40,7 @@ end
         content: "user3-team#{n+1}",
         user_id: "3",
         team_id: "#{n+1}",
-        start_time: "2021-10-27"
+        start_time: Date.today
     )
 end
 5.times do |n|
@@ -48,7 +48,7 @@ end
         content: "user4-team#{n+1}",
         user_id: "4",
         team_id: "#{n+1}",
-        start_time: "2021-10-27"
+        start_time: Date.today
     )
 end
 5.times do |n|
@@ -56,6 +56,6 @@ end
         content: "user5-team#{n+1}",
         user_id: "5",
         team_id: "#{n+1}",
-        start_time: "2021-10-27"
+        start_time: Date.today
     )
 end

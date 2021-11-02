@@ -3,14 +3,13 @@
 
             <div class="mb-3">
                 <h1>チーム個別ページ</h1>
-                <% if @member_check.nil? %>
+                <% if @member_check.blank? %>
                     <%= link_to("チーム参加","/teams/#{@current_team.id}/team_in",class: "btn btn-primary",method: :post)%>
-                <% else %>
+                <% elsif @manager_check.blank? && @member_check.present?%>
                     <%= link_to("チーム脱退","/teams/#{@current_team.id}/team_out",class: "btn btn-secondary",method: :post)%>
                 <% end %>
-                <%= link_to("チーム削除","/teams/#{@current_team.id}/destroy",class: "btn btn-danger",method: :post)%>
             </div>
-            <%="#{@current_team.team_name}　チームID:#{@current_team.id}"%>
+            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者ID:#{@current_team.manager_id}"%>
 
         <% if @member_check.present? %>
 
@@ -58,11 +57,17 @@
             <% end %>
 
             <h4>チーム参加者</h4>
-            <% @member_list.each do |memver| %>
+            <% @member_list.each do |member| %>
                 <div class=".list_group">
-                    <div class=".list-group-item"><%= "ID:#{memver.user_id}" %></div>
+                    <div class=".list-group-item"><%= "ID:#{member.user_id}" %></div>
                 </div>
             <% end %>
+
+            <div class="mb-3">
+                <% if @manager_check.present? %>
+                    <%= link_to("チーム管理","/teams/#{@current_team.id}/manager",class: "btn btn-success")%>
+                <% end %>
+            </div>
 
         <% end %>
     <% end %>

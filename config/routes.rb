@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "users/sign_up" => "users#sign_up"
   get "teams/list" => "teams#team_list"
   get "teams/:id/space" => "teams#team_space"
+  get "teams/:id/manager" => "teams#team_manager"
 
   post "tasks/create" => "tasks#create"
   post "tasks/:id/destroy" => "tasks#destroy"
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   post "teams/:id/destroy" => "teams#team_destroy"
   post "teams/:id/team_in" => "teams#team_in"
   post "teams/:id/team_out" => "teams#team_out"
+  post "teams/:id/remove" => "teams#team_remove"
+  post "teams/:id/assignment" => "teams#team_assignment"
 
   delete "users/sign_out" => "users#sign_out"
 end

@@ -11,10 +11,14 @@
 # It's strongly recommended that you check this file into your version control system.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 =======
 ActiveRecord::Schema.define(version: 2021_10_21_024335) do
 >>>>>>> Team_model
+=======
+ActiveRecord::Schema.define(version: 2021_11_01_015241) do
+>>>>>>> team_manager
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
@@ -38,9 +42,13 @@ ActiveRecord::Schema.define(version: 2021_10_21_024335) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.integer "manager_id", default: 1
 =======
 >>>>>>> Team_model
+=======
+    t.integer "manager_id", default: 1
+>>>>>>> team_manager
   end
 
   create_table "users", force: :cascade do |t|
