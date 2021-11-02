@@ -4,6 +4,7 @@ class TasksController < ApplicationController
     before_action :tasks_all, only:[:index, :edit, :show, :create]
     before_action :user_id_wrong, only:[:edit, :update, :destroy]
     before_action :show_check, only:[:show]
+    before_action :date_time, only:[:index, :edit, :show, :create]
 
     def index
     end
