@@ -2,7 +2,7 @@
 
     <%= link_to("チーム個別ページに戻る","/teams/#{@current_team.id}/space") %>
 
-    <% if @manager_check.present? %>
+    <% if @manager_check.present? || @deve_user.present? %>
         <%= form_tag("/teams/#{@current_team.id}/remove") do %>
             <div class="mb-3">
                 <select name="user_id">

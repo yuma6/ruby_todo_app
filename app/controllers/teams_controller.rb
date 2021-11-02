@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
     before_action :manager_check, only:[:team_space, :team_out, :team_manager]
     before_action :date_time, only:[:team_space]
     before_action :management, only:[:team_remove, :team_assignment]
+<<<<<<< HEAD
 =======
     before_action :teams_all, only:[:index]
     before_action :set_current_team, only:[:team_space, :destroy, :team_in, :team_out]
@@ -16,6 +17,9 @@ class TeamsController < ApplicationController
     before_action :set_team_member, only:[:team_space]
     before_action :date_time, only:[:team_space]
 >>>>>>> action_name
+=======
+    before_action :deve_user, only:[:team_space, :team_manager]
+>>>>>>> add_develop_user
 
     def index
     end

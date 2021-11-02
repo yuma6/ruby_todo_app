@@ -12,6 +12,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 =======
 ActiveRecord::Schema.define(version: 2021_10_21_024335) do
@@ -19,6 +20,9 @@ ActiveRecord::Schema.define(version: 2021_10_21_024335) do
 =======
 ActiveRecord::Schema.define(version: 2021_11_01_015241) do
 >>>>>>> team_manager
+=======
+ActiveRecord::Schema.define(version: 2021_11_02_051517) do
+>>>>>>> add_develop_user
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
@@ -60,7 +64,10 @@ ActiveRecord::Schema.define(version: 2021_11_01_015241) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "deve_user", default: false, null: false
+<<<<<<< HEAD
     t.string "name", default: ""
+=======
+>>>>>>> add_develop_user
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

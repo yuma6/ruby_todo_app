@@ -21,5 +21,9 @@ class ApplicationController < ActionController::Base
       def date_time
         @date = Date.today
       end
+
+      def deve_user
+        @deve_user = current_user.deve_user
+      end
   
 end
