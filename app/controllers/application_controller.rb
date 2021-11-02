@@ -1,4 +1,8 @@
 class ApplicationController < ActionController::Base
+<<<<<<< HEAD
+=======
+    before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy, :index, :team_space, :team_in, :team_out]
+>>>>>>> action_name
 
     private
   
