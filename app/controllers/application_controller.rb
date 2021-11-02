@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-    before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy, :team_list, :team_space, :team_create, :team_manager, :team_in, :team_out]
-    before_action :date_time, only:[:index, :edit, :show, :create, :team_space]
 
     private
   
