@@ -1,0 +1,36 @@
+<div>
+
+    <%= link_to("チーム個別ページに戻る","/teams/#{@current_team.id}/space") %>
+
+    <% if @manager_check.present? %>
+        <%= form_tag("/teams/#{@current_team.id}/remove") do %>
+            <div class="mb-3">
+                <select name="user_id">
+                    <option>チームから除外するユーザーを選択する</option>
+                    <% @current_team.users.each do |users| %>
+                        <option name="user_id" value="<%= users.id %>"><%= "ユーザーID:#{users.id}" %></option>
+                    <% end %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="チームから除外する">
+            </div>
+        <% end %>
+
+        <%= form_tag("/teams/#{@current_team.id}/assignment") do %>
+            <div class="mb-3">
+                <select name="user_id">
+                    <option value="<%= @current_team.manager_id %>">管理権限を譲渡するユーザーを選択する</option>
+                    <% @current_team.users.each do |users| %>
+                        <option name="user_id" value="<%= users.id %>"><%= "ユーザーID:#{users.id}" %></option>
+                    <% end %>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="管理権限を譲渡する">
+            </div>
+        <% end %>
+        
+        <%= link_to("チーム削除","/teams/#{@current_team.id}/destroy",class: "btn btn-danger",method: :post)%>
+    <% end %>
+</div>
