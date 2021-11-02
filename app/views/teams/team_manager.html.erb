@@ -20,7 +20,7 @@
         <%= form_tag("/teams/#{@current_team.id}/assignment") do %>
             <div class="mb-3">
                 <select name="user_id">
-                    <option value="<%= @current_team.manager_id %>">管理権限を譲渡するユーザーを選択する</option>
+                    <option value="<%= "" %>">管理権限を譲渡するユーザーを選択する</option>
                     <% @current_team.users.each do |users| %>
                         <option name="user_id" value="<%= users.id %>"><%= "ユーザーID:#{users.id}" %></option>
                     <% end %>
