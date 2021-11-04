@@ -3,7 +3,7 @@
     <%= link_to("チーム個別ページに戻る","/teams/#{@current_team.id}/space") %>
 
     <% if @manager_check.present? || @deve_user.present? %>
-        <%= form_tag("/teams/#{@current_team.id}/remove") do %>
+        <%= form_tag("/teams_users/#{@current_team.id}/destroy") do %>
             <div class="mb-3">
                 <select name="user_id">
                     <option>チームから除外するユーザーを選択する</option>
