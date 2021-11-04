@@ -2,11 +2,11 @@
     <% if @user.present? %>
 
             <div class="mb-3">
-                <h1>チーム個別ページ</h1>
+                <h1><%=@current_team.team_name%></h1>
                 <% if @member_check.blank? %>
-                    <%= link_to("チーム参加","/teams/#{@current_team.id}/team_in",class: "btn btn-primary",method: :post)%>
+                    <%= link_to("チーム参加","/teams_users/#{@current_team.id}/create",class: "btn btn-primary",method: :post)%>
                 <% elsif @manager_check.blank? && @member_check.present?%>
-                    <%= link_to("チーム脱退","/teams/#{@current_team.id}/team_out",class: "btn btn-secondary",method: :post)%>
+                    <%= link_to("チーム脱退","/teams_users/#{@current_team.id}/destroy?user_id=#{@user.id}",class: "btn btn-secondary",method: :post)%>
                 <% end %>
             </div>
             <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者ID:#{@current_team.manager_id}"%>
