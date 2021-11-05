@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :authenticate_user!, only:[:show, :edit, :create, :update, :destroy]
+    before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy]
     before_action :current_task, only:[:show, :edit, :update, :destroy, :check, :show_check]
     before_action :tasks_all, only:[:index, :edit, :show, :create]
     before_action :user_id_wrong, only:[:edit, :update, :destroy]
