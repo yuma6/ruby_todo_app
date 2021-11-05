@@ -1,10 +1,13 @@
 class TeamsController < ApplicationController
 <<<<<<< HEAD
+<<<<<<< HEAD
     before_action :authenticate_user!, only:[:team_space, :create, :destroy, :team_in, :team_out]
 <<<<<<< HEAD
     before_action :set_current_user, only:[:index, :create, :team_space, :team_manager, :team_in, :team_out]
 =======
     before_action :authenticate_user!, only:[:team_space, :create, :destroy]
+=======
+>>>>>>> header&authenticate
     before_action :set_current_user, only:[:index, :create, :team_space, :team_manager]
 >>>>>>> team_user_controller
     before_action :teams_all, only:[:index]
