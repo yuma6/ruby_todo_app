@@ -1,5 +1,4 @@
 class TeamsController < ApplicationController
-    before_action :authenticate_user!, only:[:team_space, :create, :destroy]
     before_action :set_current_user, only:[:index, :create, :team_space, :team_manager]
     before_action :teams_all, only:[:index]
     before_action :set_current_team, only:[:team_space, :team_manager, :destroy, :team_assignment]

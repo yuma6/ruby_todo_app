@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-
+  before_action :authenticate_user!,except:[:sign_in, :sign_up]
+  before_action :set_current_user,only:[:deve_user]
     private
   
       def beginning_of_week
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
       end
 
       def deve_user
-        @deve_user = current_user.deve_user
+        @deve_user = @user.deve_user
       end
       
       def set_current_team
