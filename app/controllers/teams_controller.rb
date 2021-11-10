@@ -31,7 +31,11 @@ class TeamsController < ApplicationController
     before_action :is_manager?, only:[:team_assignment]
 >>>>>>> team_user_controller
     before_action :deve_user, only:[:team_space, :team_manager]
+<<<<<<< HEAD
 >>>>>>> add_develop_user
+=======
+    before_action :tasks_all, only:[:team_space]
+>>>>>>> calendar_switch
 
     def index
     end
