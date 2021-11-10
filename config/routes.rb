@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "teams/:id/assignment" => "teams#team_assignment"
   post "teams_users/:id/create" => "teams_users#create"
   post "teams_users/:id/destroy" => "teams_users#destroy"
+  post "users/:id/name" => "users#name"
 
   delete "users/sign_out" => "users#sign_out"
 end
