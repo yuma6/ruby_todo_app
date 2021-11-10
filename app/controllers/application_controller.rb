@@ -30,5 +30,9 @@ class ApplicationController < ActionController::Base
       def is_manager?
           @current_team.manager_id == params[:user_id].to_i
       end
+      
+      def tasks_all
+        @tasks = Task.all.order(created_at: :desc)
+      end
   
 end

@@ -33,29 +33,6 @@
                 <% end %>
             </div>
             
-            <%= month_calendar events: @current_team.tasks do |date,tasks| %>
-                <%= "#{date.month}/#{date.day}" %>
-                    <% tasks.each do |task| %>
-                    <% if @date.before? task.start_time %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
-                        <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
-                        <% end %>
-                    <% else %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
-                        <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
-                        <% end %>
-                    <% end %>
-                <% end %>
-            <% end %>
-
             <h4>チーム参加者</h4>
             <% @member_list.each do |member| %>
                 <div class=".list_group">
