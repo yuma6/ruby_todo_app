@@ -8,7 +8,7 @@
                 <select name="user_id">
                     <option>チームから除外するユーザーを選択する</option>
                     <% @current_team.users.each do |users| %>
-                        <option name="user_id" value="<%= users.id %>"><%= "ユーザーID:#{users.id}" %></option>
+                        <option name="user_id" value="<%= users.id %>"><%= "#{users.name}/ユーザーID:#{users.id}" %></option>
                     <% end %>
                 </select>
             </div>
@@ -22,7 +22,7 @@
                 <select name="user_id">
                     <option value="<%= "" %>">管理権限を譲渡するユーザーを選択する</option>
                     <% @current_team.users.each do |users| %>
-                        <option name="user_id" value="<%= users.id %>"><%= "ユーザーID:#{users.id}" %></option>
+                        <option name="user_id" value="<%= users.id %>"><%= "#{users.name}/ユーザーID:#{users.id}" %></option>
                     <% end %>
                 </select>
             </div>
