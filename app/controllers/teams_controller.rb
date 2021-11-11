@@ -35,7 +35,11 @@ class TeamsController < ApplicationController
 >>>>>>> add_develop_user
 =======
     before_action :tasks_all, only:[:team_space]
+<<<<<<< HEAD
 >>>>>>> calendar_switch
+=======
+    before_action :set_manager_name, only:[:team_space]
+>>>>>>> name js
 
     def index
     end
@@ -112,6 +116,10 @@ class TeamsController < ApplicationController
 
     def set_team_member
         @member_list = TeamUser.where(team_id: @current_team.id)
+    end
+
+    def set_manager_name
+        @manager_name = User.find_by(id:@current_team.manager_id).name
     end
 
 end

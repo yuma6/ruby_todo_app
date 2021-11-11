@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
     def name
         @user.name = params[:name]
-        if @user&.name.present?
+        if @user.name.present?
           @user.save
           flash[:notice]="ユーザー名を設定しました"
         else

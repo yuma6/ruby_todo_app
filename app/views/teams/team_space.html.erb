@@ -9,8 +9,7 @@
                     <%= link_to("チーム脱退","/teams_users/#{@current_team.id}/destroy?user_id=#{@user.id}",class: "btn btn-secondary",method: :post)%>
                 <% end %>
             </div>
-            <%#byebug チーム管理者の名前、途中%>
-            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者:#{User.find_by(id:@current_team.manager_id).name}/ID:#{@current_team.manager_id}"%>
+            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者:#{@manager_name}/ID:#{@current_team.manager_id}"%>
 
         <% if @member_check.present? %>
 
