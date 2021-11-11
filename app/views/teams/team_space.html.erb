@@ -9,7 +9,8 @@
                     <%= link_to("チーム脱退","/teams_users/#{@current_team.id}/destroy?user_id=#{@user.id}",class: "btn btn-secondary",method: :post)%>
                 <% end %>
             </div>
-            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者ID:#{@current_team.manager_id}"%>
+            <%#byebug チーム管理者の名前、途中%>
+            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者:#{User.find_by(id:@current_team.manager_id).name}/ID:#{@current_team.manager_id}"%>
 
         <% if @member_check.present? %>
 
@@ -36,7 +37,7 @@
             <h4>チーム参加者</h4>
             <% @member_list.each do |member| %>
                 <div class=".list_group">
-                    <div class=".list-group-item"><%= "ID:#{member.user_id}" %></div>
+                    <div class=".list-group-item"><%= "#{member.user.name}/ID:#{member.user_id}" %></div>
                 </div>
             <% end %>
         <% end %>
