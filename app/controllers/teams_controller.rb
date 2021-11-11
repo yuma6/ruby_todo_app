@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
     before_action :is_manager?, only:[:team_assignment]
     before_action :deve_user, only:[:team_space, :team_manager]
     before_action :tasks_all, only:[:team_space]
+    before_action :set_manager_name, only:[:team_space]
 
     def index
     end
@@ -69,6 +70,10 @@ class TeamsController < ApplicationController
 
     def set_team_member
         @member_list = TeamUser.where(team_id: @current_team.id)
+    end
+
+    def set_manager_name
+        @manager_name = User.find_by(id:@current_team.manager_id).name
     end
 
 end
