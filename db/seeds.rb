@@ -9,13 +9,16 @@
 User.create!(
     email: "deveuser@example.com",
     password: "deveuser",
-    deve_user: "true"
+    deve_user: "true",
+    name: "開発者ユーザー",
+    id: 0
 )
 
 5.times do |n|
     User.create!(
         email: "test#{n+1}@example.com",
-        password: "example#{n+1}"
+        password: "example#{n+1}",
+        name: "test_user#{n+1}"
     )
 end
 
