@@ -20,12 +20,6 @@
         <ul class="nav nav-tabs">
             <li class="mr-auto"><%= link_to("TODO_APP","/tasks/index") %></li>
             <li class="ml-auto"><%="ユーザー名：#{@user&.name}"%></li>
-            <% if @user&.name.blank?&&@user&.id.present? %>
-                <%= form_tag("/users/#{@user.id}/name") do %>
-                    <input name="name">
-                    <input type="submit" value="確定">
-                <% end%>
-            <% end %>
             <li><%= "　ユーザーID：#{@user&.id}" %><li>
             </ul>
             <ul class="nav nav-tabs header-menu">
