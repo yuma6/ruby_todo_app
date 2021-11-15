@@ -35,7 +35,8 @@
 
         <%= yield %>
         
-        <% unless controller.controller_name=="teams"&&controller.action_name=="index"||controller.action_name=="team_manager" %>
+        <%# unless controller.controller_name=="teams"&&controller.action_name=="index"||controller.action_name=="team_manager" %>
+        <% if controller.controller_name=="tasks"||@member_check%>
             <% if @user.id.present? %>
                 <select id="changeSelect">
                     <option value="0"><%="#{@user&.name}/ID:#{@user.id}のタスク"%></option>
