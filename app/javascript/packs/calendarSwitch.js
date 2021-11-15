@@ -1,20 +1,21 @@
 document.addEventListener('turbolinks:load', () => {
-    itemDisplay()
-    items[0].style.display = "block"
+    let items = itemDisplay();
+    items[0].style.display = "block";
 
-    document.getElementById("changeSelect").onclick = changeTeam
-})
+    document.getElementById("changeSelect").onclick = changeTeam;
+});
 
 function itemDisplay(){
-    items = document.querySelectorAll('.item');
-    for(var item of items){
+    let items = document.querySelectorAll('.item');
+    for(let item of items){
         item.style.display = "none";
     };
+    return items;
 };
 
 function changeTeam(){
     itemDisplay()
-    value = document.getElementById('changeSelect').value;
-    item = document.getElementById(value);
+    let value = document.getElementById('changeSelect').value;
+    let item = document.getElementById(value);
     item.style.display = "block";
 };

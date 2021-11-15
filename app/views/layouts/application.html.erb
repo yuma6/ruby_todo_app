@@ -35,7 +35,6 @@
 
         <%= yield %>
         
-        <%# unless controller.controller_name=="teams"&&controller.action_name=="index"||controller.action_name=="team_manager" %>
         <% if controller.controller_name=="tasks"||@member_check%>
             <% if @user.id.present? %>
                 <select id="changeSelect">
@@ -50,17 +49,14 @@
                     <%= month_calendar events: @user.tasks do |date,tasks| %>
                         <%= "#{date.month}/#{date.day}" %>
                         <% tasks.each do |task| %>
+                            <br>
                             <% if @date.before? task.start_time and task.finish %>
-                                <br>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
                             <% elsif @date.before? task.start_time and !task.finish %>
-                                <br>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %>
                             <% elsif task.finish %>
-                                <br>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
                             <% elsif !task.finish %>
-                                <br>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %>
                             <% end %>
                         <% end %>
@@ -73,17 +69,14 @@
                         <%= month_calendar events: @tasks.where(team_id:in_team.id) do |date,tasks| %>
                             <%= "#{date.month}/#{date.day}" %>
                             <% tasks.each do |task| %>
+                                <br>
                                 <% if @date.before? task.start_time and task.finish %>
-                                    <br>
                                     <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
                                 <% elsif @date.before? task.start_time and !task.finish %>
-                                    <br>
                                     <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %>
                                 <% elsif task.finish %>
-                                    <br>
                                     <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
                                 <% elsif !task.finish %>
-                                    <br>
                                     <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %>
                                 <% end %>
                             <% end %>
