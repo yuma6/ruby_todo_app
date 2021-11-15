@@ -41,10 +41,6 @@ class TasksController < ApplicationController
         @task = Task.find_by(id: params[:id])
     end
 
-    def tasks_all
-        @tasks = Task.all.order(created_at: :desc)
-    end
-
     def save_valid_task
         if @task.valid?(:add_task)
             @task.save

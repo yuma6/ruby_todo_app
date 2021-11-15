@@ -3,15 +3,28 @@
 
             <div class="mb-3">
                 <h1><%=@current_team.team_name%></h1>
+                <div class="mb-3">
+                    <%="管理者:#{@manager_name}/ID:#{@current_team.manager_id}"%>
+                    <% if @manager_check.present? || @deve_user.present? %>
+                        <%= link_to("チーム管理","/teams/#{@current_team.id}/manager",class: "btn btn-success")%>
+                    <% end %>
+                </div>
                 <% if @member_check.blank? %>
                     <%= link_to("チーム参加","/teams_users/#{@current_team.id}/create",class: "btn btn-primary",method: :post)%>
                 <% elsif @manager_check.blank? && @member_check.present?%>
+                    <%="チームID:#{@current_team.id}"%>
                     <%= link_to("チーム脱退","/teams_users/#{@current_team.id}/destroy?user_id=#{@user.id}",class: "btn btn-secondary",method: :post)%>
                 <% end %>
             </div>
-            <%="#{@current_team.team_name}　チームID:#{@current_team.id}　チーム管理者ID:#{@current_team.manager_id}"%>
 
         <% if @member_check.present? %>
+
+            <h4>チーム参加者</h4>
+            <div class=".list_group mb-3">
+                <% @member_list.each do |member| %>
+                    <div class=".list-group-item"><%= "#{member.user.name}/ID:#{member.user_id}" %></div>
+                <% end %>
+            </div>
 
             <div name="todo_create">
                 <%= form_tag("/tasks/create") do %>
@@ -33,42 +46,7 @@
                 <% end %>
             </div>
             
-            <%= month_calendar events: @current_team.tasks do |date,tasks| %>
-                <%= "#{date.month}/#{date.day}" %>
-                    <% tasks.each do |task| %>
-                    <% if @date.before? task.start_time %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
-                        <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
-                        <% end %>
-                    <% else %>
-                        <% if task.finish %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
-                        <% else %>
-                            <br>
-                            <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
-                        <% end %>
-                    <% end %>
-                <% end %>
-            <% end %>
-
-            <h4>チーム参加者</h4>
-            <% @member_list.each do |member| %>
-                <div class=".list_group">
-                    <div class=".list-group-item"><%= "ID:#{member.user_id}" %></div>
-                </div>
-            <% end %>
         <% end %>
-
-        <div class="mb-3">
-            <% if @manager_check.present? || @deve_user.present? %>
-                <%= link_to("チーム管理","/teams/#{@current_team.id}/manager",class: "btn btn-success")%>
-            <% end %>
-        </div>
 
     <% end %>
 </div>

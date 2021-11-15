@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :team_users
   has_many :teams, through: :team_users
   has_many :tasks
+
+  validates :name, presence: true, length: { maximum: 50 }
 end

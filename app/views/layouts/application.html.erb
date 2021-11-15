@@ -18,52 +18,78 @@
             <span class="alert"><%= alert %></span>
         </span>
         <ul class="nav nav-tabs">
-          <li class="mr-auto"><%= link_to("TODO_APP","/tasks/index") %></li>
-          <li class="ml-auto"><%= "ユーザーID：#{@user&.id}" %><li>
-        </ul>
-        <ul class="nav nav-tabs header-menu">
-          <li class="nav-link"><%= link_to("タスク一覧","/tasks/index") %></li>
-          <li class="nav-link"><%= link_to("チーム一覧","/teams/list")%></li>
-          <% if @user.blank? || @user&.id.blank? %>
-            <li class="nav-link"><%= link_to("ログイン","/users/sign_in") %></li>
-            <li class="nav-link"><%= link_to("登録","/users/sign_up") %></li>
-          <% elsif @user.present? %>
-            <li class="nav-link"><%= link_to("ログアウト","/users/sign_out",method: :delete) %></li>
-          <% end %>
+            <li class="mr-auto"><%= link_to("TODO_APP","/tasks/index") %></li>
+            <li class="ml-auto"><%="ユーザー名：#{@user&.name}"%></li>
+            <li><%= "　ユーザーID：#{@user&.id}" %><li>
+            </ul>
+            <ul class="nav nav-tabs header-menu">
+            <li class="nav-link"><%= link_to("タスク一覧","/tasks/index") %></li>
+            <li class="nav-link"><%= link_to("チーム一覧","/teams/list")%></li>
+            <% if @user.blank? || @user&.id.blank? %>
+                <li class="nav-link ml-auto"><%= link_to("ログイン","/users/sign_in") %></li>
+                <li class="nav-link"><%= link_to("登録","/users/sign_up") %></li>
+            <% elsif @user.present? %>
+                <li class="nav-link ml-auto"><%= link_to("ログアウト","/users/sign_out",method: :delete) %></li>
+            <% end %>
         </ul>
 
         <%= yield %>
+        
+        <% if controller.controller_name=="tasks"||@member_check%>
+            <% if @user.id.present? %>
+                <select id="changeSelect">
+                    <option value="0"><%="#{@user&.name}/ID:#{@user.id}のタスク"%></option>
+                    <% @user.teams.each do |teams| %>
+                        <option name="team_id" value="<%= teams.id %>"><%= teams.team_name %></option>
+                    <% end %>
+                </select>
 
-        <% if controller.controller_name == "tasks" %>
-            <% if @user.present? %>
-                <%= month_calendar events: @user.tasks do |date,tasks| %>
-                    <%= "#{date.month}/#{date.day}" %>
-                    <% tasks.each do |task| %>
-                        <% if @date.before? task.start_time %>
-                            <% if task.finish %>
-                                <br>
+                <div class="item" id="0">
+                <%= "#{@user&.name}/ID:#{@user.id}" %>
+                    <%= month_calendar events: @user.tasks do |date,tasks| %>
+                        <%= "#{date.month}/#{date.day}" %>
+                        <% tasks.each do |task| %>
+                            <br>
+                            <% if @date.before? task.start_time and task.finish %>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
-                            <% else %>
-                                <br>
-                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %> 
-                            <% end %>
-                        <% else %>
-                            <% if task.finish %>
-                                <br>
+                            <% elsif @date.before? task.start_time and !task.finish %>
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %>
+                            <% elsif task.finish %>
                                 <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
-                            <% else %>
-                                <br>
-                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %> 
+                            <% elsif !task.finish %>
+                                <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %>
                             <% end %>
                         <% end %>
                     <% end %>
-                <% end %>
+                </div>
+
+                <%@user.teams.each do |in_team|%>
+                    <div class="item" id="<%=in_team.id%>">
+                        <%= in_team.team_name %>
+                        <%= month_calendar events: @tasks.where(team_id:in_team.id) do |date,tasks| %>
+                            <%= "#{date.month}/#{date.day}" %>
+                            <% tasks.each do |task| %>
+                                <br>
+                                <% if @date.before? task.start_time and task.finish %>
+                                    <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe del"} %>
+                                <% elsif @date.before? task.start_time and !task.finish %>
+                                    <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"safe"} %>
+                                <% elsif task.finish %>
+                                    <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over del"} %>
+                                <% elsif !task.finish %>
+                                    <%= link_to "#{task.content}","/tasks/#{task.id}/show",{class:"over"} %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                <%end%>
+
                 <h4>参加中のチーム</h4>
                 <% @user.teams.each do |team| %>
                     <div class=".list_group">
                         <%= link_to(team.team_name,"/teams/#{team.id}/space") %>
                     </div>
-                <% end %>            
+                <% end %>
             <% end %>
         <% end %>
 
