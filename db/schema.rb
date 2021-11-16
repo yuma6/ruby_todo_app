@@ -15,6 +15,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 =======
 ActiveRecord::Schema.define(version: 2021_10_21_024335) do
@@ -31,6 +32,9 @@ ActiveRecord::Schema.define(version: 2021_11_10_042555) do
 =======
 ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 >>>>>>> name js
+=======
+ActiveRecord::Schema.define(version: 2021_11_11_025628) do
+>>>>>>> 58a9e496030d5092d56c8fc588feab0e328666ba
 
   create_table "tasks", force: :cascade do |t|
     t.string "content"
@@ -55,12 +59,16 @@ ActiveRecord::Schema.define(version: 2021_11_11_025628) do
     t.datetime "updated_at", precision: 6, null: false
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.integer "manager_id", default: 1
 =======
 >>>>>>> Team_model
 =======
     t.integer "manager_id", default: 1
 >>>>>>> team_manager
+=======
+    t.integer "manager_id", default: 1
+>>>>>>> 58a9e496030d5092d56c8fc588feab0e328666ba
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +83,7 @@ ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.string "name", default: ""
 =======
 >>>>>>> add_develop_user
@@ -84,6 +93,9 @@ ActiveRecord::Schema.define(version: 2021_11_11_025628) do
 =======
     t.string "name", default: ""
 >>>>>>> name js
+=======
+    t.string "name", default: ""
+>>>>>>> 58a9e496030d5092d56c8fc588feab0e328666ba
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

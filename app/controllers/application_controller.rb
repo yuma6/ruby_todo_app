@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     before_action :set_current_user, only:[:index, :edit, :show, :create, :update, :destroy, :index, :team_space, :team_in, :team_out]
 >>>>>>> action_name
@@ -17,6 +18,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!,except:[:sign_in, :sign_up]
   before_action :set_current_user,only:[:deve_user]
 >>>>>>> header&authenticate
+=======
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!,except:[:sign_in, :sign_up]
+  before_action :set_current_user,only:[:deve_user]
+>>>>>>> 58a9e496030d5092d56c8fc588feab0e328666ba
     private
   
       def beginning_of_week
